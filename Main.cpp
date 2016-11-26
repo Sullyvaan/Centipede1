@@ -14,21 +14,25 @@ int main ()
 	cin >> file;
 	cout << "String for name Generation: ";
 	cin >> material_string;
-	PartCreate(material_string, file);
+	PartCreate("abcdefghijklmnopqrstuvwxyz", file);
 	return 0;
 }
 
 bool PartCreate(string characters, string filename)
 {
-	fstream outfile(filename);
+	ofstream outfile;
+	outfile.open(filename + ".txt");
 	int characters_size = characters.size();
+	cout << characters_size;//
 	for (int i = 0; i < characters_size; i++){
 		for (int j = 0; j < characters_size; j++){
 			for (int k = 0; k < characters_size; k++){
-				if ((characters[i] == characters[j]) || (characters[j] == characters[k]))
+				cout << characters[i] << characters[j] << characters[k] << "\n";
+				//system("pause");
+				if ((characters[i] == characters[j]) | (characters[j] == characters[k]))
 					continue;
 				else
-					outfile << characters[i] + characters[j] + characters[k] + "\n";
+					outfile << characters[i] << characters[j] << characters[k] << endl;
 			}
 		}
 	}
